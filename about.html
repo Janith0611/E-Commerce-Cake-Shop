@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Sweet Crumbs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1200&q=80') center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      margin-top: -50px;
+      position: relative;
+      z-index: 10;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .team-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+    }
+    .team-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .team-info {
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <a href="shop.html" class="icon-btn"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-btn cart-toggle">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge cart-count" style="display: none;">0</span>
+        </a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="about-hero fade-in">
+    <div>
+      <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Our Story</h1>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Baking the world a better place, one cake at a time.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats-container fade-in">
+      <div class="stat-item">
+        <div class="stat-number counter" data-target="15">0</div>
+        <p>Years of Experience</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number counter" data-target="5000">0</div>
+        <p>Happy Customers</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number counter" data-target="120">0</div>
+        <p>Cake Varieties</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number counter" data-target="12">0</div>
+        <p>Awards Won</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-5 mt-3">
+    <div class="container about-grid">
+      <div class="fade-in">
+        <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?auto=format&fit=crop&w=800&q=80" alt="Bakery Interior" style="border-radius: var(--radius-md); box-shadow: var(--shadow);">
+      </div>
+      <div class="fade-in">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--primary-color);">Baking with Passion</h2>
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">Founded in 2011, Sweet Crumbs started as a small family kitchen with a big dream: to create cakes that not only look spectacular but taste unforgettable.</p>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">We believe that every celebration deserves a centerpiece made with the finest ingredients, meticulous attention to detail, and a whole lot of love. From our rich Belgian chocolate to our fresh locally sourced berries, we never compromise on quality.</p>
+        <div style="display: flex; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check text-primary" style="color: var(--primary-color);"></i> 100% Natural Ingredients</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-check text-primary" style="color: var(--primary-color);"></i> Baked Fresh Daily</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5" style="background: var(--secondary-color);">
+    <div class="container">
+      <h2 class="section-title fade-in">Meet Our Master Bakers</h2>
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=400&q=80" alt="Chef Sarah" class="team-img">
+          <div class="team-info">
+            <h3 style="margin-bottom: 0.5rem;">Sarah Jenkins</h3>
+            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">Head Pastry Chef</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">With 10 years in Paris, Sarah brings authentic French techniques to our custom cakes.</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=400&q=80" alt="Chef Michael" class="team-img">
+          <div class="team-info">
+            <h3 style="margin-bottom: 0.5rem;">Michael Chen</h3>
+            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">Chocolatier</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Master of all things cocoa. Michael's truffles and chocolate drip cakes are legendary.</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=400&q=80" alt="Chef Elena" class="team-img">
+          <div class="team-info">
+            <h3 style="margin-bottom: 0.5rem;">Elena Rossi</h3>
+            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">Cake Decorator</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Elena's sugar flowers and intricate fondant work turn cakes into edible art.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+          <p style="color: var(--text-muted);">Baking happiness every day. Premium ingredients, beautiful designs, and unforgettable taste.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Customer Service</h3>
+          <div class="footer-links">
+            <a href="faq.html">FAQ</a>
+            <a href="shipping-returns.html">Shipping & Returns</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sweet Crumbs Bakery. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animated Counters
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200;
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = +counter.getAttribute('data-target');
+            
+            const updateCount = () => {
+              const count = +counter.innerText;
+              const inc = target / speed;
+              if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 1);
+              } else {
+                counter.innerText = target + (target > 100 ? '+' : '');
+              }
+            };
+            updateCount();
+            observer.unobserve(counter);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(counter => observer.observe(counter));
+    });
+  </script>
+</body>
+</html>

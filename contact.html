@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Sweet Crumbs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-color);
+    }
+
+    .info-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+    }
+
+    .map-container {
+      width: 100%;
+      height: 400px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: 3rem;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <a href="shop.html" class="icon-btn"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-btn cart-toggle">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge cart-count" style="display: none;">0</span>
+        </a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-5" style="margin-top: 80px; background: var(--secondary-color); text-align: center;">
+    <div class="container fade-in">
+      <h1>Get In Touch</h1>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Have a question about a custom cake? Want
+        to leave feedback? We'd love to hear from you!</p>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container contact-grid">
+
+      <div class="fade-in">
+        <div class="contact-info-cards">
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt info-icon"></i>
+            <h3>Location</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">15 Deveni Rajasinghe Mawatha,<br>Kandy 20000</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-phone-alt info-icon"></i>
+            <h3>Phone</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">(+94) 77 256 6787<br>Mon-Sat: 8am - 8pm</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-envelope info-icon"></i>
+            <h3>Email</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">hello@sweetcrumbs.com<br>orders@sweetcrumbs.com</p>
+          </div>
+          <div class="info-card">
+            <i class="fab fa-whatsapp info-icon"></i>
+            <h3>WhatsApp</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">(+94) 77 256 6787<br>Fast Replies</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <h3 style="margin-bottom: 1rem;">Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.pinterest.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-in">
+        <h2 style="margin-bottom: 1.5rem;">Send us a Message</h2>
+        <form onsubmit="event.preventDefault(); showToast('Message sent successfully!'); this.reset();">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea class="form-control" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="container fade-in">
+      <div class="map-container">
+        <!-- Embedded Google Map -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d22387.781377038387!2d80.58381337578403!3d7.281964243760367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sHotels!5e0!3m2!1sen!2slk!4v1778914173320!5m2!1sen!2slk"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+          <p style="color: var(--text-muted);">Baking happiness every day. Premium ingredients, beautiful designs, and unforgettable taste.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Customer Service</h3>
+          <div class="footer-links">
+            <a href="faq.html">FAQ</a>
+            <a href="shipping-returns.html">Shipping & Returns</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sweet Crumbs Bakery. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="icon-btn" id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cart-sidebar-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Subtotal:</span><span id="cart-sidebar-total">$0.00</span></div>
+      <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">View Cart</a>
+      <a href="checkout.html" class="btn btn-primary" style="width: 100%;">Checkout</a>
+    </div>
+  </div>
+
+  <a href="https://wa.me/+94772566787" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Sweet Crumbs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <a href="shop.html" class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-btn cart-toggle" aria-label="Cart"><i class="fas fa-shopping-bag"></i><span class="badge cart-count" style="display: none;">0</span></a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-5" style="background: var(--secondary-color);">
+    <div class="container" style="text-align: center; color: #fff; padding: 4rem 1rem; border-radius: var(--radius-lg);">
+      <h1>Frequently Asked Questions</h1>
+      <p style="max-width: 700px; margin: 1rem auto;">Find quick answers to the most common questions about ordering, shipping, and caring for your Sweet Crumbs cake.</p>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="content-card">
+        <h2 class="section-title">Ordering</h2>
+        <div class="faq-item">
+          <h3>How far in advance should I place my cake order?</h3>
+          <p>For standard cakes, please order at least 72 hours before your event. Custom designs and specialty cakes may require 5-7 days notice.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I request a custom design or flavor?</h3>
+          <p>Yes! Select "Custom Cake" on the shop page, then choose your flavor and design options. Our team will confirm the details with you.</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2 class="section-title">Shipping & Delivery</h2>
+        <div class="faq-item">
+          <h3>Do you deliver cakes locally?</h3>
+          <p>We offer local delivery within our city limits and curbside pickup for neighbors. Delivery fees depend on your location at checkout.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What happens if my cake arrives damaged?</h3>
+          <p>If your cake arrives damaged, please contact us immediately with photos. We will evaluate the issue and help arrange a refund or replacement.</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2 class="section-title">Product Care</h2>
+        <div class="faq-item">
+          <h3>How should I store my cake?</h3>
+          <p>Keep your cake refrigerated if it contains fresh cream, buttercream, or fruit filling. Remove it from the fridge 30-45 minutes before serving for best taste.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How long will my cake stay fresh?</h3>
+          <p>Most cakes stay fresh for 2-3 days refrigerated. Cakes with perishable fillings should be eaten within 24-48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+          <p style="color: var(--text-muted);">Baking happiness every day. Premium ingredients, beautiful designs, and unforgettable taste.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Customer Service</h3>
+          <div class="footer-links">
+            <a href="faq.html">FAQ</a>
+            <a href="shipping-returns.html">Shipping & Returns</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sweet Crumbs Bakery. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="icon-btn" id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cart-sidebar-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Subtotal:</span><span id="cart-sidebar-total">$0.00</span></div>
+      <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">View Cart</a>
+      <a href="checkout.html" class="btn btn-primary" style="width: 100%;">Checkout</a>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

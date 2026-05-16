@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Sweet Crumbs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .product-details-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .product-details-container { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .product-gallery {
+      position: sticky;
+      top: 100px;
+    }
+    .main-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    /* Zoom effect wrapper */
+    .img-zoom-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+    }
+    .img-zoom-container:hover .main-image {
+      transform: scale(1.1);
+    }
+    .product-meta {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .product-price-large {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 1.5rem 0;
+    }
+    .ingredients-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      margin: 2rem 0;
+    }
+    .related-products {
+      margin-top: 5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <a href="shop.html" class="icon-btn"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-btn cart-toggle">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge cart-count" style="display: none;">0</span>
+        </a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-5" style="margin-top: 80px;">
+    <div class="container">
+      <div class="product-details-container fade-in" id="product-details-content">
+        <!-- Rendered via JS -->
+      </div>
+      
+      <div class="related-products fade-in">
+        <h2 class="section-title">You Might Also Like</h2>
+        <div class="products-grid" id="related-grid">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">&copy; 2026 Sweet Crumbs Bakery. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="icon-btn" id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cart-sidebar-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Subtotal:</span><span id="cart-sidebar-total">$0.00</span></div>
+      <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">View Cart</a>
+      <a href="checkout.html" class="btn btn-primary" style="width: 100%;">Checkout</a>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get('id')) || 1; // Default to 1 if no ID
+      
+      const product = dummyProducts.find(p => p.id === productId);
+      
+      if (!product) {
+        document.getElementById('product-details-content').innerHTML = '<h2>Product not found.</h2><a href="shop.html" class="btn btn-primary mt-1">Back to Shop</a>';
+        return;
+      }
+
+      // Render Product Details
+      const container = document.getElementById('product-details-content');
+      container.innerHTML = `
+        <div class="product-gallery">
+          <div class="img-zoom-container">
+            <img src="${product.image}" alt="${product.name}" class="main-image">
+          </div>
+        </div>
+        <div class="product-info">
+          <div style="color: var(--primary-color); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem;">${product.category}</div>
+          <h1 style="font-size: 3rem; line-height: 1.2;">${product.name}</h1>
+          <div class="product-meta">
+            <div class="stars" style="color: #ffc107;">${generateStars(product.rating)}</div>
+            <div>${product.reviews} Customer Reviews</div>
+          </div>
+          
+          <div class="product-price-large">$${product.price.toFixed(2)}</div>
+          
+          <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;">
+            ${product.description}
+          </p>
+
+          <div class="ingredients-box">
+            <h3 style="margin-bottom: 1rem;"><i class="fas fa-leaf" style="color: #25d366;"></i> Premium Ingredients</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Flour, Sugar, Free-range Eggs, French Butter, Madagascar Vanilla Bean, Heavy Cream, and specific flavorings.</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;"><em>Allergy Info: Contains Dairy, Eggs, Gluten. Produced in a facility that handles Nuts.</em></p>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem;">
+            <div class="qty-selector" style="margin: 0;">
+              <button class="qty-btn" id="prod-qty-minus">-</button>
+              <input type="number" class="qty-input" id="prod-qty" value="1" min="1" readonly style="width: 50px;">
+              <button class="qty-btn" id="prod-qty-plus">+</button>
+            </div>
+            <button class="btn btn-primary" id="prod-add-cart" style="flex-grow: 1; padding: 1rem; font-size: 1.1rem;">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+            <button class="action-btn" onclick="toggleWishlist(${product.id})" style="width: 50px; height: 50px; background: var(--secondary-color); border-radius: var(--radius-sm);">
+              <i class="${wishlist.includes(product.id) ? 'fas' : 'far'} fa-heart" style="font-size: 1.2rem; color: ${wishlist.includes(product.id) ? '#ff4d4d' : 'var(--text-color)'};"></i>
+            </button>
+          </div>
+          
+          <div style="display: flex; gap: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+            <div><i class="fas fa-truck"></i> Next Day Delivery</div>
+            <div><i class="fas fa-box"></i> Secure Packaging</div>
+          </div>
+        </div>
+      `;
+
+      // Setup Add to Cart interactions
+      const qtyInput = document.getElementById('prod-qty');
+      document.getElementById('prod-qty-minus').addEventListener('click', () => {
+        let val = parseInt(qtyInput.value);
+        if (val > 1) qtyInput.value = val - 1;
+      });
+      document.getElementById('prod-qty-plus').addEventListener('click', () => {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+      });
+      document.getElementById('prod-add-cart').addEventListener('click', () => {
+        addToCart(product.id, parseInt(qtyInput.value));
+      });
+
+      // Render Related Products (same category, exclude current)
+      const related = dummyProducts.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+      renderProducts(related.length ? related : dummyProducts.slice(0, 4), 'related-grid');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Sweet Crumbs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .cart-page-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 900px) {
+      .cart-page-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cart-table-wrapper {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+    .cart-table th {
+      text-align: left;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .cart-table td {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+    .cart-product-col {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cart-product-img {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+    }
+    .order-summary {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .summary-total {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+        <a href="shop.html" class="icon-btn"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-btn cart-toggle">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge cart-count" style="display: none;">0</span>
+        </a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-5" style="margin-top: 80px; background: var(--secondary-color); text-align: center;">
+    <div class="container fade-in">
+      <h1>Your Shopping Cart</h1>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="cart-page-container fade-in" id="cart-page-content">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;"><i class="fas fa-birthday-cake"></i> Sweet Crumbs</a>
+          <p style="color: var(--text-muted);">Baking happiness every day. Premium ingredients, beautiful designs, and unforgettable taste.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/SweetCrumbsBakery" target="_blank" rel="noopener" aria-label="Sweet Crumbs on Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Customer Service</h3>
+          <div class="footer-links">
+            <a href="faq.html">FAQ</a>
+            <a href="shipping-returns.html">Shipping & Returns</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sweet Crumbs Bakery. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="icon-btn" id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cart-sidebar-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Subtotal:</span><span id="cart-sidebar-total">$0.00</span></div>
+      <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">View Cart</a>
+      <a href="checkout.html" class="btn btn-primary" style="width: 100%;">Checkout</a>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    function renderCartPage() {
+      const container = document.getElementById('cart-page-content');
+      
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 4rem; background: var(--card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow);">
+            <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--border-color); margin-bottom: 1rem;"></i>
+            <h2>Your cart is currently empty.</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Looks like you haven't added any sweet treats yet.</p>
+            <a href="shop.html" class="btn btn-primary">Return to Shop</a>
+          </div>
+        `;
+        return;
+      }
+
+      let subtotal = 0;
+      const tableRows = cart.map(item => {
+        const total = item.price * item.quantity;
+        subtotal += total;
+        return `
+          <tr>
+            <td>
+              <div class="cart-product-col">
+                <img src="${item.image}" alt="${item.name}" class="cart-product-img">
+                <div>
+                  <div style="font-weight: 600;">${item.name}</div>
+                  <div style="font-size: 0.9rem; color: var(--text-muted);">${item.category}</div>
+                </div>
+              </div>
+            </td>
+            <td>$${item.price.toFixed(2)}</td>
+            <td>
+              <div class="qty-selector" style="margin: 0; justify-content: flex-start;">
+                <button class="qty-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                <input type="number" class="qty-input" value="${item.quantity}" readonly style="width: 40px; padding: 2px;">
+                <button class="qty-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+              </div>
+            </td>
+            <td style="font-weight: 700; color: var(--primary-color);">$${total.toFixed(2)}</td>
+            <td>
+              <button class="icon-btn" style="background: #ffe6e6; color: #ff4d4d;" onclick="removeFromCart(${item.id})">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="cart-table-wrapper">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tableRows}
+            </tbody>
+          </table>
+          <div style="margin-top: 2rem; display: flex; justify-content: space-between;">
+            <a href="shop.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+            <button class="btn btn-outline" onclick="cart=[]; saveCart(); updateCartUI(); renderCartPage();">Clear Cart</button>
+          </div>
+        </div>
+        
+        <div class="order-summary">
+          <h3 style="margin-bottom: 1.5rem;">Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>$${subtotal.toFixed(2)}</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span>$${subtotal.toFixed(2)}</span>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Taxes and shipping calculated at checkout.</p>
+          <a href="checkout.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCartPage);
+  </script>
+</body>
+</html>
